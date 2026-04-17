@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Jaydon 💙</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5f9cff, #8ec5fc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+
+    .container {
+      text-align: center;
+      color: white;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-weight: normal;
+      font-size: 24px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #4a90e2;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      min-width: 80px;
+      touch-action: manipulation;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #f0f0f0;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 18px;
+      max-width: 90vw;
+      line-height: 1.6;
+      display: none;
+      padding: 20px;
+    }
+
+    #restartBtn {
+      padding: 15px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #4a90e2;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      display: none;
+      min-width: 80px;
+      touch-action: manipulation;
+    }
+
+    #restartBtn:hover {
+      transform: scale(1.08);
+      background: #f0f0f0;
+    }
+
+    #restartBtn:active {
+      transform: scale(0.95);
+    }
+
+    .final-page {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      padding: 50px 20px 50px 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .final-page.active {
+      display: flex;
+      color: white;
+    }
+
+    .final-message {
+      font-size: 28px;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .final-page #restartBtn {
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+
+      button {
+        padding: 12px 25px;
+        font-size: 14px;
+      }
+
+      .message {
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      .final-message {
+        font-size: 24px;
+      }
+
+      .final-page {
+        padding: 40px 15px 40px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Hey Jaydon 💙</h1>
+
+    <button onclick="showMessage()" id="btn">I made this for you</button>
+
+    <div id="msg" class="message"></div>
+  </div>
+
+  <div class="final-page" id="finalPage">
+    <div class="final-message">Have a good night 💙</div>
+    <button onclick="restartMessages()" id="restartBtn">Restart</button>
+  </div>
+
+  <script>
+    let currentIndex = -1;
+
+    function showMessage() {
+      const messages = [
+        "Jaydon, you're the best — don't ever doubt that.",
+        "You've got something special. Just keep going your way.",
+        "Not everyone will understand you, and that's okay.",
+        "Stay focused. You're built for more than you think.",
+        "You don't need to prove anything to anyone.",
+        "Just keep being you — that's enough."
+      ];
+
+      currentIndex++;
+      let msgBox = document.getElementById("msg");
+      let btn = document.getElementById("btn");
+      let finalPage = document.getElementById("finalPage");
+      let container = document.querySelector(".container");
+
+      if (currentIndex < messages.length) {
+        msgBox.innerText = messages[currentIndex];
+        msgBox.style.display = "block";
+      } else if (currentIndex === messages.length) {
+        // Show final page
+        container.style.display = "none";
+        finalPage.classList.add("active");
+      }
+    }
+
+    function restartMessages() {
+      currentIndex = -1;
+      let msgBox = document.getElementById("msg");
+      let btn = document.getElementById("btn");
+      let finalPage = document.getElementById("finalPage");
+      let container = document.querySelector(".container");
+
+      msgBox.style.display = "none";
+      msgBox.innerText = "";
+      btn.innerText = "I made this for you";
+      btn.disabled = false;
+      btn.style.opacity = "1";
+      container.style.display = "";
+      finalPage.classList.remove("active");
+    }
+  </script>
+
+</body>
+</html>
